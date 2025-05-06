@@ -21,7 +21,7 @@ console.log("1-masala natijasi:", result1);
 // Dilnoza "Men pro dasturchiman!" dedi-da, yangi talaba qo'shmoqchi bo'lib, o'rniga ro'yhatni bo'shatib qo'ydi! рџ¤¦вЂЌв™ЂпёЏ  
 // Modul sifatida logika yozing  
 export function addNewPerson(people, newPerson) {  
-    // Logika yozing  
+    return people.concat([newPerson])
 }  
 const people2 = [  
     { name: "Fotima", gender: "female", id: 1 },  
