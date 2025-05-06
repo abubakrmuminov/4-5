@@ -2,7 +2,7 @@
 // Zafarjon o'zini "Dasturchilar shohi" deb ataydi, lekin u ro'yhatdan faqat erkaklarni ajratib olishni bilmaydi, ahmoq! рџ¤Ў  
 // Modul sifatida logika yozing  
 export function filterByGender(people, gender) {  
-    // Logika yozing  
+    return people.filter(person => person.gender === gender);
 }  
 const people1 = [  
     { name: "Fotima", gender: "female", id: 1 },  
