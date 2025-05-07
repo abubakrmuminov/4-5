@@ -40,7 +40,7 @@ console.log("2-masala natijasi:", result2);
 // Husniddin "Men hamma narsani bilaman!" dedi, lekin talabani o'chirish o'rniga butun ro'yhatni o'chirib tashladi! рџ…  
 // Modul sifatida logika yozing  
 export function deletePerson(people, id) {  
-    // Logika yozing  
+    return people.filter(person => person.id !== id); 
 }  
 const people3 = [  
     { name: "Fotima", gender: "female", id: 1 },  
@@ -58,7 +58,12 @@ console.log("3-masala natijasi:", result3);
 // Sevinch "Ism o'zgartirish oson!" dedi, lekin u ism o'rniga jinsni o'zgartirib qo'ydi, qizaloq! рџ‚  
 // Modul sifatida logika yozing  
 export function updatePersonName(people, id, newName) {  
-    // Logika yozing  
+    return people.map(person => {
+    if (person.id === id) {
+      return Object.assign({}, person, { name: newName });
+    }
+    return person;
+  });
 }  
 const people4 = [  
     { name: "Fotima", gender: "female", id: 1 },  
@@ -76,8 +81,8 @@ console.log("4-masala natijasi:", result4);
 // Nodir "Men faqat ayollarni ko'raman!" dedi, lekin u erkaklarni ham ko'rsatib qo'ydi, shoshib qolgan ekan! рџ¤¦вЂЌв™‚пёЏ  
 // Modul sifatida logika yozing  
 export function filterFemales(people) {  
-    // Logika yozing  
-}  
+    return people.filter(person => person.gender === "female");
+} 
 const people5 = [  
     { name: "Fotima", gender: "female", id: 1 },  
     { name: "Aziz", gender: "male", id: 4 },  
@@ -93,9 +98,13 @@ console.log("5-masala natijasi:", result5);
 // 6-masala  
 // Shohruh "Men ayol qo'shaman!" dedi, lekin u erkak qo'shib qo'ydi, ahmoqona xato! рџ¤Ў  
 // Modul sifatida logika yozing  
-export function addFemalePerson(people, newPerson) {  
-    // Logika yozing  
-}  
+export function addFemalePerson(people, newPerson) {
+  if (newPerson.gender !== "female") {
+    console.log("Faqat ayol qo‘shish mumkin!");
+    return people.slice(); // Original array nusxasini qaytarish
+  }
+  return people.concat([newPerson]);
+}
 const people6 = [  
     { name: "Fotima", gender: "female", id: 1 },  
     { name: "Aziz", gender: "male", id: 4 },  
@@ -112,9 +121,15 @@ console.log("6-masala natijasi:", result6);
 // 7-masala  
 // Malika "Men 2-idni o'chiraman!" dedi, lekin u 1-idni o'chirib yubordi, qizaloq shoshibdi! рџ‚  
 // Modul sifatida logika yozing  
-export function deleteById(people, id) {  
-    // Logika yozing  
-}  
+    export function deleteById(people, id) {
+  const exists = people.some(person => person.id === id);
+  if (!exists) {
+    console.log(`ID ${id} topilmadi!`);
+    return people.slice(); // Original array nusxasini qaytarish
+  }
+  return people.filter(person => person.id !== id);
+}
+
 const people7 = [  
     { name: "Fotima", gender: "female", id: 1 },  
     { name: "Aziz", gender: "male", id: 4 },  
@@ -130,9 +145,8 @@ console.log("7-masala natijasi:", result7);
 // 8-masala  
 // Javohir "Men jinsni o'zgartiraman!" dedi, lekin u id ni unutdi, shoshib qolgan ekan! рџ¤¦вЂЌв™‚пёЏ  
 // Modul sifatida logika yozing  
-export function updateGender(people, id, newGender) {  
-    // Logika yozing  
-}  
+export function updateGender(people, id, newGender) {
+  }
 const people8 = [  
     { name: "Fotima", gender: "female", id: 1 },  
     { name: "Aziz", gender: "male", id: 4 },  
